@@ -1,0 +1,60 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-dark text-white ">
+    <div class="container ">
+        <h1 class="display-4">Welcome To Our Blog Site</h1>
+        <p class="lead">Read all the tech blogs from here</p>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <div class="card ">
+                <div class="card-header  bg-dark text-white">
+                    Write A Blog
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'homepage' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Title</label>
+                            {{blogForm.title}}
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            {{blogForm.description}}
+                        </div>
+                        <div class="form-group">
+                            <label>Author Name</label>
+                            {{authorForm.name}}
+                        </div>
+                        <div class="form-group">
+                            <label>Author Bio</label>
+                            {{authorForm.bio}}
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary px-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-5">
+            <div class="card ">
+                <div class="card-header bg-dark text-white">
+                    Summary
+                </div>
+                <div class="card-body">
+                    <p>Number Of BLogs: {{blogCount}} </p>
+                    <p>Number Of Authors: {{authorCount}}</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

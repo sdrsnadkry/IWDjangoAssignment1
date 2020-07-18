@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-dark text-white ">
+    <div class="container ">
+        <h1 class="display-4">Blog Page</h1>
+        <p class="lead">This page contains all the blogs in blog table</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for blog in blog_list %}
+        <div class="col-6 mt-2">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <p>Author: {{ blog.author.name }} <br> Created At: {{blog.created_at}} <br> Modified At:
+                        {{blog.updated_at}}
+                    </p>
+                    <p class="card-text">{{blog.description}}</p>
+                    <a href="{% url 'deleteblog' blog.id %}" class="btn btn-outline-danger px-5">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
